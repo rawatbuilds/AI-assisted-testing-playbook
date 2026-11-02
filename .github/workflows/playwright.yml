@@ -1,0 +1,50 @@
+name: Playwright tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  typecheck-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # `npm install` works with or without a lockfile. Once you commit package-lock.json
+      # (created by your first local `npm install`), switch this to `npm ci` and add
+      # `cache: npm` to setup-node for reproducible, faster builds.
+      - name: Install dependencies
+        run: npm install
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run UI and API tests
+        run: npx playwright test
+
+      - name: Triage failures (clusters errors, writes a redacted LLM-ready prompt)
+        if: failure()
+        run: |
+          python3 scripts/triage_failures.py reports/results.json \
+            --out reports/triage.md --prompt-out reports/triage-prompt.md
+          cat reports/triage.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-reports
+          path: |
+            playwright-report/
+            reports/
+          retention-days: 14

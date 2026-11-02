@@ -1,0 +1,130 @@
+{
+  "_note": "SYNTHETIC report used only to demo scripts/triage_failures.py. It is not output from a real run.",
+  "stats": { "expected": 14, "unexpected": 5, "flaky": 1, "skipped": 0 },
+  "suites": [
+    {
+      "title": "checkout.spec.ts",
+      "file": "tests/ui/checkout.spec.ts",
+      "specs": [],
+      "suites": [
+        {
+          "title": "Checkout",
+          "specs": [
+            {
+              "title": "TC-CHK-01 completes an order with valid details",
+              "file": "tests/ui/checkout.spec.ts",
+              "tests": [
+                {
+                  "projectName": "ui",
+                  "status": "unexpected",
+                  "results": [
+                    {
+                      "status": "failed",
+                      "error": {
+                        "message": "\u001b[31mTimeoutError\u001b[39m: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByTestId('checkout')"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "TC-CHK-02 blocks checkout when firstName is empty",
+              "file": "tests/ui/checkout.spec.ts",
+              "tests": [
+                {
+                  "projectName": "ui",
+                  "status": "unexpected",
+                  "results": [
+                    {
+                      "status": "failed",
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByTestId('checkout')"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "TC-CHK-05 order total equals item total plus tax",
+              "file": "tests/ui/checkout.spec.ts",
+              "tests": [
+                {
+                  "projectName": "ui",
+                  "status": "flaky",
+                  "results": [
+                    { "status": "failed", "error": { "message": "Error: expect(received).toBe(expected)\n\nExpected: 3239\nReceived: 3240" } },
+                    { "status": "passed" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "booking.spec.ts",
+      "file": "tests/api/booking.spec.ts",
+      "specs": [],
+      "suites": [
+        {
+          "title": "Booking lifecycle",
+          "specs": [
+            {
+              "title": "TC-API-04 create returns an id and echoes the booking",
+              "file": "tests/api/booking.spec.ts",
+              "tests": [
+                {
+                  "projectName": "api",
+                  "status": "unexpected",
+                  "results": [
+                    {
+                      "status": "failed",
+                      "error": { "message": "Error: apiRequestContext.post: getaddrinfo ENOTFOUND restful-booker.herokuapp.com" }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "TC-API-05 get by id returns what was created",
+              "file": "tests/api/booking.spec.ts",
+              "tests": [
+                {
+                  "projectName": "api",
+                  "status": "unexpected",
+                  "results": [
+                    {
+                      "status": "failed",
+                      "error": { "message": "Error: apiRequestContext.post: getaddrinfo ENOTFOUND restful-booker.herokuapp.com" }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "TC-API-06 update with a valid token changes the booking",
+              "file": "tests/api/booking.spec.ts",
+              "tests": [
+                {
+                  "projectName": "api",
+                  "status": "unexpected",
+                  "results": [
+                    {
+                      "status": "failed",
+                      "error": {
+                        "message": "Error: PUT failed for user admin@example.com with token=abcdef0123456789abcdef0123456789\nExpected: 200\nReceived: 403"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

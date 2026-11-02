@@ -1,0 +1,368 @@
+[
+  {
+    "id": "BK-VALID-01",
+    "category": "valid",
+    "expectation": "accept",
+    "note": "",
+    "payload": {
+      "firstname": "Vikram",
+      "lastname": "Nair",
+      "totalprice": 3334,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  },
+  {
+    "id": "BK-VALID-02",
+    "category": "valid",
+    "expectation": "accept",
+    "note": "",
+    "payload": {
+      "firstname": "Rohan",
+      "lastname": "Kulkarni",
+      "totalprice": 4874,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-VALID-03",
+    "category": "valid",
+    "expectation": "accept",
+    "note": "",
+    "payload": {
+      "firstname": "Kabir",
+      "lastname": "Verma",
+      "totalprice": 804,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Late checkout"
+    }
+  },
+  {
+    "id": "BK-MISSING-FIRSTNAME",
+    "category": "missing-required",
+    "expectation": "reject",
+    "note": "omits firstname",
+    "payload": {
+      "lastname": "Singh",
+      "totalprice": 843,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  },
+  {
+    "id": "BK-MISSING-LASTNAME",
+    "category": "missing-required",
+    "expectation": "reject",
+    "note": "omits lastname",
+    "payload": {
+      "firstname": "Rohan",
+      "totalprice": 4875,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-MISSING-TOTALPRICE",
+    "category": "missing-required",
+    "expectation": "reject",
+    "note": "omits totalprice",
+    "payload": {
+      "firstname": "Nisha",
+      "lastname": "Verma",
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-MISSING-DEPOSITPAID",
+    "category": "missing-required",
+    "expectation": "reject",
+    "note": "omits depositpaid",
+    "payload": {
+      "firstname": "Meera",
+      "lastname": "Rao",
+      "totalprice": 3533,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-MISSING-BOOKINGDATES",
+    "category": "missing-required",
+    "expectation": "reject",
+    "note": "omits bookingdates",
+    "payload": {
+      "firstname": "Rohan",
+      "lastname": "Rao",
+      "totalprice": 4689,
+      "depositpaid": true,
+      "additionalneeds": "Breakfast"
+    }
+  },
+  {
+    "id": "BK-PRICE-ZERO",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "free booking",
+    "payload": {
+      "firstname": "Kabir",
+      "lastname": "Kulkarni",
+      "totalprice": 0,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-PRICE-NEGATIVE",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "negative price",
+    "payload": {
+      "firstname": "Asha",
+      "lastname": "Singh",
+      "totalprice": -1,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Late checkout"
+    }
+  },
+  {
+    "id": "BK-PRICE-HUGE",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "very large price",
+    "payload": {
+      "firstname": "Arjun",
+      "lastname": "Mehta",
+      "totalprice": 2147483647,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  },
+  {
+    "id": "BK-PRICE-DECIMAL",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "fractional price",
+    "payload": {
+      "firstname": "Meera",
+      "lastname": "Singh",
+      "totalprice": 99.99,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-NAME-ONE-CHAR",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "1-character name",
+    "payload": {
+      "firstname": "A",
+      "lastname": "B",
+      "totalprice": 3776,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-NAME-LONG-256",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "256-character name",
+    "payload": {
+      "firstname": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "lastname": "Iyer",
+      "totalprice": 4293,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  },
+  {
+    "id": "BK-NAME-UNICODE",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "non-Latin names",
+    "payload": {
+      "firstname": "आशा",
+      "lastname": "वर्मा",
+      "totalprice": 4105,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  },
+  {
+    "id": "BK-NAME-WHITESPACE",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "whitespace-only name",
+    "payload": {
+      "firstname": "   ",
+      "lastname": "Kulkarni",
+      "totalprice": 2886,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-NAME-MARKUP",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "markup in a name field (stored XSS probe)",
+    "payload": {
+      "firstname": "<b>x</b>",
+      "lastname": "Mehta",
+      "totalprice": 663,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Late checkout"
+    }
+  },
+  {
+    "id": "BK-TYPE-PRICE-STRING",
+    "category": "wrong-type",
+    "expectation": "unspecified",
+    "note": "price sent as a string",
+    "payload": {
+      "firstname": "Arjun",
+      "lastname": "Iyer",
+      "totalprice": "1250",
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-TYPE-DEPOSIT-STRING",
+    "category": "wrong-type",
+    "expectation": "unspecified",
+    "note": "deposit flag sent as a string",
+    "payload": {
+      "firstname": "Arjun",
+      "lastname": "Rao",
+      "totalprice": 3260,
+      "depositpaid": "yes",
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-05"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  },
+  {
+    "id": "BK-DATES-REVERSED",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "checkout before checkin",
+    "payload": {
+      "firstname": "Arjun",
+      "lastname": "Kulkarni",
+      "totalprice": 1476,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-12-05",
+        "checkout": "2026-12-01"
+      },
+      "additionalneeds": "Late checkout"
+    }
+  },
+  {
+    "id": "BK-DATES-SAME-DAY",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "zero-night stay",
+    "payload": {
+      "firstname": "Asha",
+      "lastname": "Singh",
+      "totalprice": 2454,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-12-01",
+        "checkout": "2026-12-01"
+      },
+      "additionalneeds": "Airport pickup"
+    }
+  },
+  {
+    "id": "BK-DATES-BAD-FORMAT",
+    "category": "wrong-format",
+    "expectation": "unspecified",
+    "note": "date in DD/MM/YYYY",
+    "payload": {
+      "firstname": "Kabir",
+      "lastname": "Das",
+      "totalprice": 3302,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "01/12/2026",
+        "checkout": "05/12/2026"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+]

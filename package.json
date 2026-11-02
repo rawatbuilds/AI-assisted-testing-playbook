@@ -1,0 +1,23 @@
+{
+  "name": "ai-assisted-testing-playbook",
+  "version": "1.0.0",
+  "description": "How I use AI in test automation: prompts, reviewed Playwright UI/API tests, test-data generation and failure triage.",
+  "private": true,
+  "author": "Rajat Singh Rawat",
+  "license": "MIT",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --project=ui",
+    "test:api": "playwright test --project=api",
+    "typecheck": "tsc --noEmit",
+    "report": "playwright show-report",
+    "data": "python3 scripts/generate_test_data.py --seed 7 --out data/generated",
+    "triage": "python3 scripts/triage_failures.py reports/results.json --out reports/triage.md --prompt-out reports/triage-prompt.md",
+    "triage:demo": "python3 scripts/triage_failures.py scripts/fixtures/sample-results.json --out reports/triage-demo.md --prompt-out reports/triage-demo-prompt.md"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}

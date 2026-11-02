@@ -1,0 +1,123 @@
+[
+  {
+    "id": "CF-VALID-01",
+    "category": "valid",
+    "expectation": "accept",
+    "note": "typical",
+    "payload": {
+      "firstName": "Asha",
+      "lastName": "Verma",
+      "postalCode": "560001"
+    }
+  },
+  {
+    "id": "CF-VALID-02",
+    "category": "valid",
+    "expectation": "accept",
+    "note": "short names",
+    "payload": {
+      "firstName": "Li",
+      "lastName": "Wu",
+      "postalCode": "10001"
+    }
+  },
+  {
+    "id": "CF-EMPTY-FIRST",
+    "category": "missing-required",
+    "expectation": "reject",
+    "note": "first name blank",
+    "payload": {
+      "firstName": "",
+      "lastName": "Verma",
+      "postalCode": "560001"
+    }
+  },
+  {
+    "id": "CF-EMPTY-LAST",
+    "category": "missing-required",
+    "expectation": "reject",
+    "note": "last name blank",
+    "payload": {
+      "firstName": "Asha",
+      "lastName": "",
+      "postalCode": "560001"
+    }
+  },
+  {
+    "id": "CF-EMPTY-POSTAL",
+    "category": "missing-required",
+    "expectation": "reject",
+    "note": "postal code blank",
+    "payload": {
+      "firstName": "Asha",
+      "lastName": "Verma",
+      "postalCode": ""
+    }
+  },
+  {
+    "id": "CF-WHITESPACE-FIRST",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "whitespace-only first name",
+    "payload": {
+      "firstName": "   ",
+      "lastName": "Verma",
+      "postalCode": "560001"
+    }
+  },
+  {
+    "id": "CF-LONG-NAME",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "300-character first name",
+    "payload": {
+      "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "lastName": "Verma",
+      "postalCode": "560001"
+    }
+  },
+  {
+    "id": "CF-POSTAL-LETTERS",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "letters in postal code",
+    "payload": {
+      "firstName": "Asha",
+      "lastName": "Verma",
+      "postalCode": "ABCDE"
+    }
+  },
+  {
+    "id": "CF-POSTAL-LONG",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "40-digit postal code",
+    "payload": {
+      "firstName": "Asha",
+      "lastName": "Verma",
+      "postalCode": "1111111111111111111111111111111111111111"
+    }
+  },
+  {
+    "id": "CF-MARKUP",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "markup in a name field",
+    "payload": {
+      "firstName": "<script>x</script>",
+      "lastName": "Verma",
+      "postalCode": "560001"
+    }
+  },
+  {
+    "id": "CF-UNICODE",
+    "category": "boundary",
+    "expectation": "unspecified",
+    "note": "non-Latin names",
+    "payload": {
+      "firstName": "आशा",
+      "lastName": "वर्मा",
+      "postalCode": "560001"
+    }
+  }
+]
